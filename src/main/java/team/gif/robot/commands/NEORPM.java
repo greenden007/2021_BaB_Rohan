@@ -9,18 +9,15 @@ package team.gif.robot.commands;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import team.gif.robot.Globals;
 import team.gif.robot.Robot;
-import team.gif.robot.subsystems.CIM;
+import team.gif.robot.subsystems.NEO;
 
 /**
  * Describe the Command functionality here
  */
-public class CIMJoystick extends CommandBase {
+public class NEORPM extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
-  public CIMJoystick() {
-  }
 
   // Called when the command is initially scheduled.
   @Override
@@ -30,11 +27,8 @@ public class CIMJoystick extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double currPercent = -Robot.oi.driver.getY(GenericHID.Hand.kLeft);
-    if (Math.abs(currPercent) < 0.1) {
-      currPercent = 0;
-    }
-    team.gif.robot.subsystems.CIM.getInstance().setSpeed(currPercent);
+    double currPercent = Robot.oi.driver.getY(GenericHID.Hand.kRight);
+    NEO.getInstance().setRPM(currPercent * 1000);
   }
 
   // Returns true when the command should end.

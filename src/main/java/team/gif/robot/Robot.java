@@ -1,8 +1,13 @@
 
 package team.gif.robot;
 
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import team.gif.robot.commands.*;
+import team.gif.robot.subsystems.drivers.Pigeon;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -23,6 +28,12 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     System.out.println("robot init");
     // autonomous chooser on the dashboard.
+    Pigeon.getInstance().addToShuffleboard("Pigeon");
+    CIMJoystick CIMJ = new CIMJoystick();
+    CIMX cimx = new CIMX();
+    CIMA cima = new CIMA();
+    NEORPM neorpm = new NEORPM();
+    NEOYBut neoyBut = new NEOYBut();
 
   }
 
@@ -73,7 +84,6 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
   }
-
   @Override
   public void testInit() {
   }

@@ -27,7 +27,7 @@ public class LimitSwitch extends SubsystemBase {
     return instance;
   }
 
-  public static DigitalInput limitSwitch = new DigitalInput(RobotMap.DEVICE_ID); //Need to replace DEVICE_ID
+  public static DigitalInput limitSwitch = new DigitalInput(RobotMap.LIMITSWITCH); //Need to replace DEVICE_ID
 
   public boolean getSwitchStatus(){
     return !limitSwitch.get();

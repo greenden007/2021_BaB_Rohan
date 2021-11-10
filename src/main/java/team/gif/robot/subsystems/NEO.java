@@ -32,11 +32,22 @@ public class NEO extends SubsystemBase {
 
   private int maxAmps = 50;
   private NEO(){
+    NEOMotor.restoreFactoryDefaults();
+    NEOMotor.enableVoltageCompensation(12);
     NEOMotor.setIdleMode(CANSparkMax.IdleMode.kCoast);
     NEOMotor.setSmartCurrentLimit(maxAmps, maxAmps);
+
+    /*
+    * NEOControl.setP(VALUE);
+    * NEOControl.setFF(VALUE);
+    * NEOControl.setOutputRange(RANGE);
+    * */
   }
   public void setRPM(double velocity) {
     NEOControl.setReference(velocity, ControlType.kVelocity);
+  }
+  public void setVoltage(double voltage) {
+    NEOMotor.setVoltage(voltage);
   }
   public double getRPM() {
     return NEOEncoder.getVelocity();

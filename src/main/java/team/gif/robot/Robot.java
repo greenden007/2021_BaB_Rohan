@@ -14,6 +14,8 @@ import team.gif.robot.subsystems.LimitSwitch;
 import team.gif.robot.subsystems.NEO;
 import team.gif.robot.subsystems.drivers.Pigeon;
 
+import java.sql.SQLOutput;
+
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -56,7 +58,8 @@ public class Robot extends TimedRobot {
     CommandScheduler.getInstance().run();
 
     SmartDashboard.putBoolean("Limit Switch", LimitSwitch.getInstance().getSwitchStatus());
-    SmartDashboard.putNumber("NEO RPM", NEO.getInstance().getRPM());
+    SmartDashboard.putString("NEO RPM", NEO.getInstance().toShuffle());
+    System.out.println("Pigeon Heading: " + Pigeon.getInstance().getHeading());
   }
 
   /**
@@ -86,6 +89,8 @@ public class Robot extends TimedRobot {
     System.out.println("teleop init");
 
     oi = new OI();
+    CIMCommand.schedule();
+    NEOCommand.schedule();
   }
 
   @Override

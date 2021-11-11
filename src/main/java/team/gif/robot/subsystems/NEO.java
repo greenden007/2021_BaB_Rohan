@@ -53,4 +53,5 @@ public class NEO extends SubsystemBase {
   public double getRPM() {
     return NEOEncoder.getVelocity();
   }
+  public String toShuffle() {return String.format("%12.0f", getRPM());}
 }

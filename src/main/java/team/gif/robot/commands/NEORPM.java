@@ -28,7 +28,7 @@ public class NEORPM extends CommandBase {
   @Override
   public void execute() {
     double currPercent = Robot.oi.driver.getY(GenericHID.Hand.kRight);
-    NEO.getInstance().setRPM(currPercent * 1000);
+    NEO.getInstance().setRPM(currPercent * 60);
   }
 
   // Returns true when the command should end.

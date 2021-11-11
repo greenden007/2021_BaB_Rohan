@@ -28,9 +28,8 @@ public class CIMX extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (Robot.oi.driver.getXButton()) {
-      CIM.getInstance().setSpeed(-0.2);
-    }
+    CIM.getInstance().setSpeed(-0.2);
+
   }
   // Returns true when the command should end.
   @Override

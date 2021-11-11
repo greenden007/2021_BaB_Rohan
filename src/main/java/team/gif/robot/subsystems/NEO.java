@@ -30,17 +30,18 @@ public class NEO extends SubsystemBase {
   private static final CANEncoder NEOEncoder = NEOMotor.getEncoder();
   private static final CANPIDController NEOControl = NEOMotor.getPIDController();
 
-  private int maxAmps = 50;
-  private NEO(){
+  private int maxAmps = 40;
+  public NEO(){
+    super();
     NEOMotor.restoreFactoryDefaults();
     NEOMotor.enableVoltageCompensation(12);
     NEOMotor.setIdleMode(CANSparkMax.IdleMode.kCoast);
     NEOMotor.setSmartCurrentLimit(maxAmps, maxAmps);
+    NEOControl.setOutputRange(0, 1);
 
     /*
     * NEOControl.setP(VALUE);
     * NEOControl.setFF(VALUE);
-    * NEOControl.setOutputRange(RANGE);
     * */
   }
   public void setRPM(double velocity) {

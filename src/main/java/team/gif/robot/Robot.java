@@ -1,12 +1,17 @@
 
 package team.gif.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import team.gif.robot.commands.*;
+import team.gif.robot.subsystems.LimitSwitch;
+import team.gif.robot.subsystems.NEO;
 import team.gif.robot.subsystems.drivers.Pigeon;
 
 /**
@@ -18,6 +23,9 @@ import team.gif.robot.subsystems.drivers.Pigeon;
 public class Robot extends TimedRobot {
 
   public static OI oi;
+  public static Command CIMCommand = null;
+  public static WPI_TalonSRX talon = null;
+  public static Command NEOCommand = null;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -27,14 +35,12 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     System.out.println("robot init");
+    talon = new WPI_TalonSRX(RobotMap.MOTOR_TALON_ONE);
     // autonomous chooser on the dashboard.
+    Pigeon pigeon = new Pigeon(talon);
     Pigeon.getInstance().addToShuffleboard("Pigeon");
-    CIMJoystick CIMJ = new CIMJoystick();
-    CIMX cimx = new CIMX();
-    CIMA cima = new CIMA();
-    NEORPM neorpm = new NEORPM();
-    NEOYBut neoyBut = new NEOYBut();
-
+    CIMCommand = new CIMJoystick();
+    NEOCommand = new NEORPM();
   }
 
   /**
@@ -49,6 +55,8 @@ public class Robot extends TimedRobot {
 
     CommandScheduler.getInstance().run();
 
+    SmartDashboard.putBoolean("Limit Switch", LimitSwitch.getInstance().getSwitchStatus());
+    SmartDashboard.putNumber("NEO RPM", NEO.getInstance().getRPM());
   }
 
   /**

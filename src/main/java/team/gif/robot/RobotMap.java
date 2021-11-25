@@ -5,7 +5,7 @@ public abstract class RobotMap {
     // ** CAN IDs **
     // Motors
     public static final int MOTOR_TALON_ONE = 0;
-    public static final int MOTOR_SPARKMAX_ONE = 10;
+    public static final int MOTOR_SPARKMAX_ONE = 2;
 
     //pigeon when connected in CAN path
     public static final int PIGEON = 99;
@@ -16,5 +16,5 @@ public abstract class RobotMap {
     public static final int TEST_CONTROLLER_ID = 2;
 
     // ** DIO ports **
-    public static final int DEVICE_ID = 0;
+    public static final int LIMITSWITCH = 0;
 }

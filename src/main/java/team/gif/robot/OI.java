@@ -4,6 +4,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import team.gif.lib.AxisButton;
+import team.gif.robot.commands.CIMA;
+import team.gif.robot.commands.CIMB;
+import team.gif.robot.commands.CIMX;
+import team.gif.robot.commands.NEOYBut;
 
 
 public class OI {
@@ -66,6 +70,10 @@ public class OI {
          * dRT.whileHeld(new EjectCommand());
          *
          */
+        dA.whenHeld(new CIMA());
+        dB.whenHeld(new CIMB());
+        dX.whenHeld(new CIMX());
+        dY.whenHeld(new NEOYBut());
 
     }
 

@@ -37,4 +37,7 @@ public class CIM extends SubsystemBase {
   public void setSpeed(double speed) {
     talon.set(ControlMode.PercentOutput, speed);
   }
+  public double getSpeedPercent() {
+    return talon.getMotorOutputPercent();
+  }
 }

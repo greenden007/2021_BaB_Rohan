@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import team.gif.robot.commands.*;
+import team.gif.robot.subsystems.CIM;
 import team.gif.robot.subsystems.LimitSwitch;
 import team.gif.robot.subsystems.NEO;
 import team.gif.robot.subsystems.drivers.Pigeon;
@@ -58,7 +59,9 @@ public class Robot extends TimedRobot {
     CommandScheduler.getInstance().run();
 
     SmartDashboard.putBoolean("Limit Switch", LimitSwitch.getInstance().getSwitchStatus());
-    SmartDashboard.putString("NEO RPM", NEO.getInstance().toShuffle());
+    LimitSwitch.getInstance().updateSwitchStatus();
+    SmartDashboard.putNumber("NEO RPM", NEO.getInstance().getRPM());
+    SmartDashboard.putNumber("CIM RPM%", CIM.getInstance().getSpeedPercent());
     System.out.println("Pigeon Heading: " + Pigeon.getInstance().getHeading());
   }
 

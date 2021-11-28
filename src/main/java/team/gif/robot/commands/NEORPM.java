@@ -27,7 +27,10 @@ public class NEORPM extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double currPercent = Robot.oi.driver.getY(GenericHID.Hand.kRight);
+    double currPercent = Robot.oi.driver.getX(GenericHID.Hand.kLeft);
+    if (currPercent < 0.1) {
+      currPercent = 0;
+    }
     NEO.getInstance().setRPM(currPercent * 60);
   }
 

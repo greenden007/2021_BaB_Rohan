@@ -34,6 +34,6 @@ public class LimitSwitch extends SubsystemBase {
     return !limitSwitch.get();
   }
   public void updateSwitchStatus() {
-    Globals.g_buttonControl = !limitSwitch.get();
+    Globals.buttonStatus = !limitSwitch.get();
   }
 }

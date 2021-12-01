@@ -8,7 +8,7 @@
 package team.gif.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import team.gif.robot.Robot;
+import team.gif.robot.Globals;
 import team.gif.robot.subsystems.CIM;
 
 /**
@@ -28,8 +28,12 @@ public class CIMX extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    CIM.getInstance().setSpeed(-0.2);
+    if(Globals.buttonStatus) {
+      CIM.getInstance().setSpeed(-0.5 * Globals.baseButtonSpeed);
 
+    } else {
+      CIM.getInstance().setSpeed(-Globals.baseButtonSpeed);
+    }
   }
   // Returns true when the command should end.
   @Override

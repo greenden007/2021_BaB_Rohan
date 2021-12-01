@@ -10,7 +10,6 @@ package team.gif.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.Globals;
 import team.gif.robot.subsystems.CIM;
-import team.gif.robot.subsystems.LimitSwitch;
 
 /**
  * Describe the Command functionality here
@@ -29,12 +28,11 @@ public class CIMB extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Globals.g_buttonControl = true;
-    if (LimitSwitch.getInstance().getSwitchStatus()) {
-      CIM.getInstance().setSpeed(0.1);
+    if (Globals.buttonStatus) {
+      CIM.getInstance().setSpeed(0.5 * Globals.baseButtonSpeed);
     }
     else {
-      CIM.getInstance().setSpeed(0.2);
+      CIM.getInstance().setSpeed(Globals.baseButtonSpeed);
     }
   }
 
@@ -48,6 +46,5 @@ public class CIMB extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     CIM.getInstance().setSpeed(0);
-    Globals.g_buttonControl = false;
   }
 }

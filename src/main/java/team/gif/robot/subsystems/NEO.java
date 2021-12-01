@@ -39,10 +39,10 @@ public class NEO extends SubsystemBase {
     NEOMotor.setSmartCurrentLimit(maxAmps, maxAmps);
     NEOControl.setOutputRange(0, 1);
 
-    /*
-    * NEOControl.setP(VALUE);
-    * NEOControl.setFF(VALUE);
-    * */
+
+    NEOControl.setP(0.0003);
+    NEOControl.setFF(0.000175);
+
   }
   public void setRPM(double velocity) {
     NEOControl.setReference(velocity, ControlType.kVelocity);

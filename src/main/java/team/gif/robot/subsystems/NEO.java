@@ -30,7 +30,7 @@ public class NEO extends SubsystemBase {
   private static final CANEncoder NEOEncoder = NEOMotor.getEncoder();
   private static final CANPIDController NEOControl = NEOMotor.getPIDController();
 
-  private int maxAmps = 40;
+  private final int maxAmps = 40;
   public NEO(){
     super();
     NEOMotor.restoreFactoryDefaults();

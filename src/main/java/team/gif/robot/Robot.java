@@ -41,6 +41,7 @@ public class Robot extends TimedRobot {
     talon = new WPI_TalonSRX(RobotMap.MOTOR_TALON_ONE);
     // autonomous chooser on the dashboard.
     Pigeon pigeon = new Pigeon(talon);
+    pigeon.resetPigeonPosition();
     Pigeon.getInstance().addToShuffleboard("Pigeon");
     CIMCommand = new CIMJoystick();
     NEOCommand = new NEORPM();
@@ -62,7 +63,7 @@ public class Robot extends TimedRobot {
     LimitSwitch.getInstance().updateSwitchStatus();
     SmartDashboard.putNumber("NEO RPM", NEO.getInstance().getRPM());
     SmartDashboard.putNumber("CIM RPM%", CIM.getInstance().getSpeedPercent());
-    System.out.println("Pigeon Heading: " + Pigeon.getInstance().getHeading());
+    System.out.println("Pigeon Heading: " + Pigeon.getInstance().get360Heading());
   }
 
   /**
